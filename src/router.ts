@@ -7,7 +7,7 @@ router.get('/product', (req, res) => {
     res.status(200)
     res.json(
         {
-            message: req.shhhh_secret
+            message: "success"
         }
     )
 
