@@ -1,7 +1,7 @@
 import prisma from "../modules/db"
 
 export const getOneUpdate = async (req, res) => {
-    const update = prisma.update.findUnique({
+    const update = await prisma.update.findUnique({
         where: {
             id: req.params.id
         }
@@ -40,7 +40,11 @@ export const createUpdate = async (req, res) => {
     }
 
     const update = await prisma.update.create({
-        data: req.body
+        data: {
+            title: req.body.title,
+            body: req.body.body,
+            product: { connect: {id: product.id} }
+        }
     })
 
     res.json({data: update})
